@@ -1,7 +1,7 @@
 <?php
 
-require_once ('MVC/Models/Database.php');
-require_once ('MVC/Models/UserData.php');
+require_once ('Database.php');
+require_once ('UserData.php');
 
 class UserFunctions
 {

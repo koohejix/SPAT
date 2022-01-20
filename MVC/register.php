@@ -1,33 +1,25 @@
 <?php
 
-require_once("MVC/Models/UserFunctions.php");
+require_once("Models/UserFunctions.php");
 $userData = new userFunctions();
 
-if (isset($_POST['registerbtn'])){
+if (isset($_POST['register-submit'])){
     $email = htmlspecialchars($_POST['email']);
     $password = $_POST['password'];
-    $password2 = $_POST['password_check'];
+    $password2 = $_POST['confirm-password'];
     if ($password == $password2){
         $hash = password_hash($password, PASSWORD_DEFAULT);
-        $firstname = htmlspecialchars($_POST['firstname']);
-        $lastname = htmlspecialchars($_POST['lastname']);
+        $firstname = htmlspecialchars($_POST['fname']);
+        $lastname = htmlspecialchars($_POST['lname']);
         $exists = $userData->addUser($email,$hash,$firstname,$lastname);
         if ($exists == False){
-            header('Location: index.php');
+            header('Location: login.php');
         }else{
             header('Location: register.php?error=Email in Use');
         }
     }else{
-        header('Location: register.php?error= Passwords Do Not Match');
+        header('Location: register.php?error=Passwords Do Not Match');
     }
-
-}
-if (isset($_POST['guestbtn'])) {
-    header('Location:guest.php');
-}
-
-if(isset($_GET['login'])) {
-    header('Location: login.php');
 }
 
 require("Views/register.phtml");

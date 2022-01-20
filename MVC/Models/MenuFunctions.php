@@ -1,7 +1,7 @@
 <?php
 
-require_once ('MVC/Models/Database.php');
-require_once ("MVC/Models/MenuData.php");
+require_once ('Database.php');
+require_once ("MenuData.php");
 
 class MenuFunctions {
     protected $_dbHandle, $_dbInstance;

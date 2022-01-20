@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php include 'template/header.phtml'; ?>
+<body>
+<?php include 'template/navigation.phtml'; ?>
+
+<?php foreach($view->startersDataSet as $menuData) { echo $menuData->getPicture(); }?>
+
+    <div class="container mt-5" id="menu">
+        <h1>Our Menu</h1>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a data-toggle="tab" href="#salad">Salads</a>
+            </li>
+            <li><a data-toggle="tab" href="#starter">Starters</a></li>
+            <li><a data-toggle="tab" href="#sushi">Sushi</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="salad" class="tab-pane fade in active show">
+                <div class="container mt-5 mb-5">
+                    <div class="row">
+                        <?php foreach($view->saladsDataSet as $menuData) { ?>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card">
+                                <img class="card-img-top" src="/MVC/images/<?php echo $menuData->getPicture(); ?>" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text"><?php echo $menuData->getName(); ?></p>
+                                    <p class="card-price text-danger">BD <?php echo $menuData->getPrice(); ?></p>
+                                    <div class="mt-5">
+                                        <button class="btn btn-success cart-button px-5">
+                                            Add to cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+
+            <div id="starter" class="tab-pane fade">
+                <div class="container">
+                    <div class="row mt-5 mb-5">
+                        <?php foreach($view->startersDataSet as $menuData) { ?>
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <img class="card-img-top" src="/MVC/images/<?php echo $menuData->getPicture(); ?>" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text"><?php echo $menuData->getName(); ?></p>
+                                    <p class="card-price text-danger">BD <?php echo $menuData->getPrice(); ?></p>
+                                    <div class="mt-5">
+                                        <button class="btn btn-success cart-button px-5">
+                                            Add to cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sushi" class="tab-pane fade">
+                <div class="container mt-5 mb-5">
+                    <div class="row">
+                        <?php foreach($view->sushiDataSet as $menuData) { ?>
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <img class="card-img-top" src="/MVC/images/<?php echo $menuData->getPicture(); ?>" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text"><?php echo $menuData->getName(); ?></p>
+                                    <p class="card-price text-danger">BD <?php echo $menuData->getPrice(); ?></p>
+                                    <div class="mt-5">
+                                        <button class="btn btn-success cart-button px-5">
+                                            Add to cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+<?php include 'template/footer.phtml'; ?>
+</body>
+</html>

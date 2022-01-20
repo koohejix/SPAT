@@ -1,0 +1,350 @@
+body {
+	color:#333;
+	font:300 18px/18px Roboto,Arial,Helvetica;
+	background:url('') right no-repeat fixed #fff;
+	-webkit-font-smoothing:antialiased;
+}
+
+a {
+	color:#00a9c6;
+	text-decoration:none;
+}
+a:hover {
+	color:#666;
+}
+
+.btn,a,.btn:hover,a:hover {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	outline: none !important;
+}
+
+h1,h2,h3,h4 {
+	margin: 0;
+	line-height: 1em;
+}
+
+h2{
+	font:300 2.5em Josefin Sans,Arial,Helvetica;
+	margin-bottom: 1.5em;
+}
+h3{
+	font:300 2em Roboto,Arial,Helvetica;
+	margin:2em 0 1em 0;
+}
+h4{
+	font:300 1.5em Roboto,Arial,Helvetica;
+	margin-bottom: 1em;
+}
+h4 i{
+	margin-right: 0.5em;
+}
+
+p{
+	font-size:1.4em;
+	line-height: 1.7em;
+	margin-bottom: 1.7em;
+}
+
+h6 {
+	font:300 1em Roboto,Arial,Helvetica;
+	margin-bottom: 1em;
+}
+
+.navbar-nav{
+	font-size : 1.3em;
+}
+
+.navbar-nav a {
+	margin: 0 10px;
+}
+
+.spacer{
+	padding: 6em 0;
+}
+
+.btn{
+	border:none;
+	border-radius: 0;
+	padding: 1em 4em;
+	background: rgba(0,0,0,0.5);
+	text-transform: uppercase;
+}
+.btn:hover,.btn:active{color: #fff;}
+.btn-default{color: #ccc;border: 1px solid #aaa;}
+.btn-default:hover,.btn-default:active{background: rgba(0,0,0,0.8);}
+.btn-primary{color: #fff;background:#666;width: 100%;outline: none;}
+.btn-primary:hover,.btn-primary:active,.btn-primary:focus{background:#333;box-shadow: none;}
+
+.navbar-fixed-top{top: 5px;}
+
+#head,.carousel{margin-top: 0;}
+
+/*banner*/
+.banner{position: relative;}
+.banner .caption{position: absolute;top: 0;left:0; right: 0; bottom: 0;background:rgba(0,0,0,0.4); }
+.banner .caption-wrapper{display: table;height: 100%;width: 100%;}
+.banner .caption-info{display: table-cell;vertical-align: middle;text-align: center;color: #fff;}
+.banner .caption-info h1{font:normal 4.5em Lobster,Arial,Helvetica;text-transform:capitalize;}
+.banner .caption-info p{font:600 1.7em Josefin Sans,Arial,Helvetica;}
+.banner a.explore{color: #fff;}
+
+/*about*/
+.about.spacer{padding-left: 4em; padding-right: 4em;padding-bottom: 0;}
+.food-list{line-height:3em;border-bottom:1px dotted #ccc; }
+.panel-group .panel{border-radius: 0;border:none;}
+.panel-group .panel a:hover{text-decoration: none;}
+
+.gototop{position: fixed;bottom: 20px; right: 20px;background: rgba(0,0,0,0.5);padding: 10px;color: #fff;}
+.gototop i{line-height: 0.5em;}
+
+#menu h1{font:normal 4.5em Lobster,Arial,Helvetica;text-transform:capitalize;}
+#menu p{font:600 1.7em Josefin Sans,Arial,Helvetica;}
+
+.forms h1{font:normal 3em Lobster,Arial,Helvetica;text-transform:capitalize;}
+.forms p{font:600 1em Josefin Sans,Arial,Helvetica;}
+.forms , .checkout input, select{
+	font-size: 1.5rem !important;
+}
+
+.products {
+	padding: 10px;
+
+}
+.nav-tabs a {
+	font-size: x-large;
+}
+
+.card{
+	border-radius: 2%;
+}
+
+.card-img-top   {
+	border-radius: 2% 2% 0 0;
+	height: 300px;
+}
+
+.card-text{
+	margin-bottom: 0;
+}
+
+.card-price{
+	font-size:1em;
+	margin-top: 5px;
+	margin-bottom: 0;
+}
+
+@media (min-width: 1025px) {
+	.h-custom {
+		height: 100vh !important;
+	}
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+	font-size: 1.5rem;
+	line-height: 2.15;
+	padding-left: .75em;
+	padding-right: .75em;
+}
+
+.card-registration .select-arrow {
+	top: 13px;
+}
+
+.bg-grey {
+	background-color: #eae8e8;
+}
+
+.card-registration .btn {
+	background-color: transparent;
+}
+
+.panel-login {
+	border-color: #ccc;
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+.panel-login>.panel-heading {
+	color: #00415d;
+	background-color: #fff;
+	border-color: #fff;
+	text-align:center;
+}
+.panel-login>.panel-heading a{
+	text-decoration: none;
+	color: #666;
+	font-weight: bold;
+	font-size: 15px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-login>.panel-heading a.active{
+	color: #029f5b;
+	font-size: 18px;
+}
+.panel-login>.panel-heading hr{
+	margin-top: 10px;
+	margin-bottom: 0px;
+	clear: both;
+	border: 0;
+	height: 1px;
+	background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+	background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+}
+.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
+	height: 45px;
+	border: 1px solid #ddd;
+	font-size: 1.2rem !important;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+
+
+.panel-login input:hover,
+.panel-login input:focus {
+	outline:none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border-color: #ccc;
+}
+.btn-login {
+	background-color: #59B2E0;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #59B2E6;
+}
+.btn-login:hover,
+.btn-login:focus {
+	color: #fff;
+	background-color: #53A3CD;
+	border-color: #53A3CD;
+}
+.forgot-password {
+	text-decoration: underline;
+	color: #888;
+}
+.forgot-password:hover,
+.forgot-password:focus {
+	text-decoration: underline;
+	color: #666;
+}
+
+.btn-register {
+	background-color: #1CB94E;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #1CB94A;
+}
+.btn-register:hover,
+.btn-register:focus {
+	color: #fff;
+	background-color: #1CA347;
+	border-color: #1CA347;
+}
+
+
+@media (min-width: 992px) {
+	.card-registration-2 .bg-grey {
+		border-top-right-radius: 16px;
+		border-bottom-right-radius: 16px;
+	}
+}
+
+@media (max-width: 991px) {
+	.card-registration-2 .bg-grey {
+		border-bottom-left-radius: 16px;
+		border-bottom-right-radius: 16px;
+	}
+}
+
+@media (max-width: 1200px) {
+	body {
+		font: 300 13px/13px Roboto, Arial, Helvetica;
+	}
+}
+
+@media (max-width: 900px) {
+	h1 {
+		font: 700 3.5em Roboto, Arial, Helvetica;
+	}
+
+	h4 {
+		font: 300 1.3em Roboto, Arial, Helvetica;
+	}
+
+	.btn {
+		padding: 1em 2em;
+	}
+
+	.svg {
+		width: 50px;
+		height: 50px;
+	}
+}
+
+
+@media (max-width: 767px) {
+	body {
+		font: 300 12px/12px Roboto, Arial, Helvetica;
+	}
+
+	.navbar-nav > li > a {
+		line-height: 1em;
+	}
+
+	.navbar-toggle {
+		margin-top: 12px;
+	}
+
+	h2.text-center {
+		text-align: left;
+		font-size: 1.7em;
+	}
+
+	h4 {
+		font: 300 1.2em Roboto, Arial, Helvetica;
+	}
+
+	.about.spacer {
+		padding-left: 2em;
+		padding-right: 2em;
+	}
+
+	.spacer {
+		padding: 2em 0;
+	}
+
+	.services ul li {
+		margin-bottom: 1em;
+	}
+
+	.highlight-info .overlay {
+		padding-bottom: 2em;
+	}
+
+	.footer {
+		padding-bottom: 2em;
+	}
+
+	.banner .caption-info h1{font:normal 1.5em Lobster,Arial,Helvetica;text-transform:capitalize;}
+	.banner .caption-info p{font:600 1em Josefin Sans,Arial,Helvetica;}
+}
