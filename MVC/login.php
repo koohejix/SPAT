@@ -19,4 +19,6 @@ if (isset($_POST['login-submit'])){
     }
 }
 
+
 require("Views/login.phtml");
+?>
