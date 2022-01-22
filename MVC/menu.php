@@ -9,6 +9,8 @@ $view->saladsDataSet = $menuDataSet->fetchSalads();
 $view->startersDataSet = $menuDataSet->fetchStarters();
 $view->sushiDataSet = $menuDataSet->fetchSushi();
 
+
+
 require_once('Views/menu.phtml');
 
 ?>

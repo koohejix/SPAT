@@ -41,7 +41,15 @@ class Login
             $userExists = False;
             return $userExists;
         }
+    }
 
+    public function userLogin($email) {
 
+        $sqlQuery = "SELECT id FROM users WHERE email = '$email'";
+
+        $statement = $this->_dbHandle->prepare($sqlQuery); // prepare a PDO statement
+        $statement->execute(); // execute the PDO statement
+
+        return $statement->fetch();
     }
 }
