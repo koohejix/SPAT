@@ -4,8 +4,6 @@
 <body>
 <?php include 'template/navigation.phtml'; ?>
 
-<?php foreach($view->startersDataSet as $menuData) { echo $menuData->getPicture(); }?>
-
     <div class="container mt-5" id="menu">
         <h1>Our Menu</h1>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
@@ -29,11 +27,13 @@
                                 <div class="card-body">
                                     <p class="card-text"><?php echo $menuData->getName(); ?></p>
                                     <p class="card-price text-danger">BD <?php echo $menuData->getPrice(); ?></p>
-                                    <div class="mt-5">
-                                        <button class="btn btn-success cart-button px-5">
-                                            Add to cart
-                                        </button>
-                                    </div>
+                                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
+                                        <div class="mt-5">
+                                            <button class="btn btn-success cart-button px-5" name="addCart" value="<?php echo $menuData->getID(); ?>">
+                                                Add to cart
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -52,11 +52,13 @@
                                 <div class="card-body">
                                     <p class="card-text"><?php echo $menuData->getName(); ?></p>
                                     <p class="card-price text-danger">BD <?php echo $menuData->getPrice(); ?></p>
-                                    <div class="mt-5">
-                                        <button class="btn btn-success cart-button px-5">
-                                            Add to cart
-                                        </button>
-                                    </div>
+                                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
+                                        <div class="mt-5">
+                                            <button class="btn btn-success cart-button px-5" name="addCart" value="<?php echo $menuData->getID(); ?>">
+                                                Add to cart
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -75,11 +77,13 @@
                                 <div class="card-body">
                                     <p class="card-text"><?php echo $menuData->getName(); ?></p>
                                     <p class="card-price text-danger">BD <?php echo $menuData->getPrice(); ?></p>
-                                    <div class="mt-5">
-                                        <button class="btn btn-success cart-button px-5">
-                                            Add to cart
-                                        </button>
-                                    </div>
+                                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
+                                        <div class="mt-5">
+                                            <button class="btn btn-success cart-button px-5" name="addCart" value="<?php echo $menuData->getID(); ?>">
+                                                Add to cart
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

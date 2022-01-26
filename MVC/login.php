@@ -2,18 +2,24 @@
 require_once ("Models/Login.php");
 require_once ("Models/UserData.php");
 require_once ("Models/UserFunctions.php");
+require_once('cartcheck.php');
 
 $view = new stdClass();
 $view->pageTitle = "Login";
 
 $userDataSet = new Login();
 
-if (isset($_POST['login-submit'])){
+if (isset($_POST['login-submit'])) {
     $email = htmlspecialchars($_POST['email']);
     $password = $_POST['password'];
-    //check username and password against database
+
     $exists = $userDataSet->userCheck($email,$password);
-    if ($exists == True){
+
+    if($email == "admin@sushilicious.com" && $password == "admin123") {
+        setcookie("admin", "admin");
+        header('Location: admin-menu.php');
+    }
+    else if ($exists == True){
         $userID = $userDataSet->userLogin($email);
         setcookie("login", "$userID");
         header('Location: home.php');

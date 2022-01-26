@@ -17,15 +17,12 @@ class MenuFunctions {
         $statement = $this->_dbHandle->prepare($sqlQuery); // prepare a PDO statement
         $statement->execute(); // execute the PDO statement
 
-        $dataSet = [];
-        while ($row = $statement->fetch()) {
-            $dataSet[] = new MenuData($row);
-        }
-        return $dataSet;
+        $row = $statement->fetch();
+        return new MenuData($row);
     }
 
     public function fetchSalads() {
-        $sqlQuery = "SELECT * FROM menu WHERE category = 'Salads'";
+        $sqlQuery = "SELECT * FROM menu WHERE category LIKE 'Salads'";
 
         $statement = $this->_dbHandle->prepare($sqlQuery); // prepare a PDO statement
         $statement->execute(); // execute the PDO statement
@@ -38,7 +35,7 @@ class MenuFunctions {
     }
 
     public function fetchStarters() {
-        $sqlQuery = "SELECT * FROM menu WHERE category = 'Starters'";
+        $sqlQuery = "SELECT * FROM menu WHERE category LIKE 'Starters'";
 
         $statement = $this->_dbHandle->prepare($sqlQuery); // prepare a PDO statement
         $statement->execute(); // execute the PDO statement
@@ -51,7 +48,7 @@ class MenuFunctions {
     }
 
     public function fetchSushi() {
-        $sqlQuery = "SELECT * FROM menu WHERE category = 'Sushi'";
+        $sqlQuery = "SELECT * FROM menu WHERE category LIKE 'Sushi'";
 
         $statement = $this->_dbHandle->prepare($sqlQuery); // prepare a PDO statement
         $statement->execute(); // execute the PDO statement

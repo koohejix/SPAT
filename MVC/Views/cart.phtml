@@ -5,7 +5,6 @@
 <?php include 'template/navigation.phtml'; ?>
 
     <div class="container my-5 py-5 h-100">
-        <form action="checkout.phtml" method="get">
       <div class="row d-flex justify-content-center align-items-center h-100 my-5">
         <div class="col-12">
           <div class="card card-registration card-registration-2" style="border-radius: 15px;">
@@ -15,74 +14,49 @@
                   <div class="p-5">
                     <div class="d-flex justify-content-between align-items-center mb-5">
                       <h1 class="fw-bold mb-0 text-black">Cart</h1>
-                      <h6 class="mb-0 text-muted">3 Items</h6>
+                      <h6 class="mb-0 text-muted"><?php $counter = 0; foreach($cartData as $p => $q) { $counter += $q; } echo $counter; ?> Items</h6>
                     </div>
                     <hr class="my-4">
-
+                    <?php $total = 0; foreach($view->cart as $cartSet) { ?>
+                      
+                    <form method="post">
+                      <input type="hidden" name="update_cart" value="1"/>
+                      <input type="hidden" name="id" value="<?php echo $cartSet->getID(); ?>"/>
                     <div class="row mb-4 d-flex justify-content-between align-items-center">
                       <div class="col-md-2 col-lg-2 col-xl-2">
-                        <img src="./images/Shrimp_Volcano.png" class="img-fluid rounded-3" >
+                        <img src="/MVC/images/<?php echo $cartSet->getPicture(); ?>" class="img-fluid rounded-3" >
                       </div>
                       <div class="col-md-3 col-lg-3 col-xl-3">
-                        <h6 class="text-muted">Sushi</h6>
-                        <h4 class="text-black mb-0">Shrimp Volcano</h4>
+                        <h6 class="text-muted"><?php echo $cartSet->getCategory(); ?></h6>
+                        <h4 class="text-black mb-0"><?php echo $cartSet->getName(); ?></h4>
                       </div>
                       <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                         <button class="btn btn-link px-2"
-                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                onclick="event.preventDefault();this.parentNode.querySelector('input[type=number]').stepDown()">
                           <i class="fas fa-minus"></i>
                         </button>
-
-                        <input id="form1" min="0" name="quantity" value="1" type="number"
+                        
+                        <input id="form1" min="0" name="quantity" value="<?php $pid = $cartSet->getID(); echo $cartData[$pid]; ?>" type="number"
                                class="form-control form-control-sm" />
 
                         <button class="btn btn-link px-2"
-                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                onclick="event.preventDefault();this.parentNode.querySelector('input[type=number]').stepUp()">
                           <i class="fas fa-plus"></i>
                         </button>
                       </div>
                       <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                        <h6 class="mb-0">BD 5.00</h6>
+                        <h6 class="mb-0"><?php $pid = $cartSet->getID(); $price = $cartSet->getPrice() * $cartData[$pid]; $total += $price; echo $price; ?> BD</h6>
                       </div>
-                      <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                        <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                      <div class="col-md-1 col-lg-1 col-xl-1 text-center">
+                        <button class="btn btn-sm bg-primary btn-primary text-center" type="submit">update</button>
                       </div>
                     </div>
-
+                    </form>
+                      <?php } ?>
                     <hr class="my-4">
-
-                    <div class="row mb-4 d-flex justify-content-between align-items-center">
-                      <div class="col-md-2 col-lg-2 col-xl-2">
-                        <img src="src/Shrimp%20Volcano.png" class="img-fluid rounded-3" >
-                      </div>
-                      <div class="col-md-3 col-lg-3 col-xl-3">
-                        <h6 class="text-muted">Sushi</h6>
-                        <h4 class="text-black mb-0">Shrimp Volcano</h4>
-                      </div>
-                      <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                        <button class="btn btn-link px-2"
-                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                          <i class="fas fa-minus"></i>
-                        </button>
-
-                        <input id="form1" min="0" name="quantity" value="1" type="number"
-                               class="form-control form-control-sm" />
-
-                        <button class="btn btn-link px-2"
-                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                          <i class="fas fa-plus"></i>
-                        </button>
-                      </div>
-                      <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                        <h6 class="mb-0">BD 5.00</h6>
-                      </div>
-                      <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                        <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
-                      </div>
-                    </div>
-
+                      
                     <div class="pt-5">
-                      <h6 class="mb-0"><a href="menu.phtml" class="text-body"><i
+                      <h6 class="mb-0"><a href="menu.php" class="text-body"><i
                               class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
                     </div>
                   </div>
@@ -93,12 +67,13 @@
                     <hr class="my-4">
 
                     <div class="d-flex justify-content-between mb-5">
-                      <h4>Total price</h4>
-                      <h4 class="text-danger">BD 12.500</h4>
+                      <h4>Total Price</h4>
+                      <h4 class="text-danger">BD <?php echo $total; ?></h4>
                     </div>
 
-                    <button type="submit" class="btn btn-register btn-block btn-lg bg-success float-end">CHECKOUT</button>
-
+                      <form action="checkout.php" method="GET">
+                          <button type="submit" class="btn btn-register btn-block btn-lg bg-success float-end">CHECKOUT</button>
+                      </form>
                   </div>
                 </div>
 

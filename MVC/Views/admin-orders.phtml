@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php include 'template/header.phtml'; ?>
+<body>
+<?php include 'template/navigation.phtml'; ?>
+
+<div class="container mt-5" id="menu">
+    <h1>Orders</h1>
+
+    <ul class="nav nav-tabs mt-5">
+        <li class="active">
+            <a data-toggle="tab" href="#pending">Pending</a>
+        </li>
+        <li>
+            <a data-toggle="tab" href="#accepted">Accepted</a>
+        </li>
+        <li>
+            <a data-toggle="tab" href="#successful">Successful</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div id="pending" class="tab-pane fade in active show">
+            <div class="container mt-5 mb-5">
+                <div class="row">
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                        <tr>
+                            <th>
+                                Order no.
+                            </th>
+                            <th>
+                                Order time
+                            </th>
+                            <th>
+                                Address
+                            </th>
+                            <th>
+                                Details
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($view->pendingDataSet as $ordersData) { ?>
+                        <tr>
+                            <td>
+                                <?php echo $ordersData->getID(); ?>
+                            </td>
+                            <td>
+                                <?php echo $ordersData->getDate(); ?>
+                            </td>
+                            <td>
+                                <?php $address = $addressDataSet->fetchAddress($ordersData->getAddressID());
+                                
+                                    if($address->getType() == "house") {
+                                        echo $address->getArea() ?> , Block <?php echo $address->getBlock() ?> ,
+                                                Street <?php echo $address->getStreet() ?> ,House <?php echo $address->getBuilding() ?> , <?php echo $address->getAdditional() ?> , <?php echo $address->getPhone();
+                                 } else {
+                                        echo $address->getArea() ?> , Block <?php echo $address->getBlock() ?> , Street <?php echo $address->getStreet() ?> , Building <?php echo $address->getBuilding() ?> ,
+                                            Floor <?php echo $address->getFloor() ?> , Apartment <?php echo $address->getApartment() ?> , <?php echo $address->getAdditional() ?> , <?php echo $address->getPhone();
+                                }  ?>
+                            </td>
+                            <td>
+                                <?php $view->orderItems = $itemsDataSet->fetchOrderItems($ordersData->getID());
+                                foreach($view->orderItems as $itemsData) { ?>
+                                <h6>
+                                    <strong><?php echo $itemsData->getQuantity(); ?></strong> x <?php echo $itemsData->getItemName(); ?>
+                                </h6>
+                                <?php } ?>
+                            </td>
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="action" value="1">
+                                    <input type="hidden" name="order_id" value="<?php echo $ordersData->getID(); ?>">
+                                    <input type="hidden" name="status" value="accepted">
+                                    <button href="#!" class="btn btn-login px-4 py-3">
+                                        <i class="fas fa-check fa-xl"></i>
+                                    </button>
+                                </form>
+                                <form method="post">
+                                    <input type="hidden" name="action" value="1">
+                                    <input type="hidden" name="order_id" value="<?php echo $ordersData->getID(); ?>">
+                                    <input type="hidden" name="status" value="canceled">
+                                    <button href="#!" class="btn btn-register px-4 py-3">
+                                    <i class="fas fa-times fa-xl"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="accepted" class="tab-pane fade">
+            <div class="container mt-5 mb-5">
+                <div class="row">
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                        <tr>
+                            <th>
+                                Order no.
+                            </th>
+                            <th>
+                                Order time
+                            </th>
+                            <th>
+                                Address
+                            </th>
+                            <th>
+                                Details
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($view->acceptedDataSet as $ordersData) { ?>
+                        <tr>
+                            <td>
+                                <?php echo $ordersData->getID(); ?>
+                            </td>
+                            <td>
+                                <?php echo $ordersData->getDate(); ?>
+                            </td>
+                            <td>
+                                <?php $address = $addressDataSet->fetchAddress($ordersData->getAddressID());
+                                    if($address->getType() == "house") {
+                                        echo $address->getArea() ?> , Block <?php echo $address->getBlock() ?> ,
+                                        Street <?php echo $address->getStreet() ?> ,House <?php echo $address->getBuilding() ?> , <?php echo $address->getAdditional() ?> , <?php echo $address->getPhone();
+                                    } else {
+                                        echo $address->getArea() ?> , Block <?php echo $address->getBlock() ?> , Street <?php echo $address->getStreet() ?> , Building <?php echo $address->getBuilding() ?> ,
+                                        Floor <?php echo $address->getFloor() ?> , Apartment <?php echo $address->getApartment() ?> , <?php echo $address->getAdditional() ?> , <?php echo $address->getPhone();
+                                    } ?>
+                            </td>
+                            <td>
+                                <?php $view->orderItems = $itemsDataSet->fetchOrderItems($ordersData->getID());
+                                foreach($view->orderItems as $itemsData) { ?>
+                                    <h6>
+                                        <strong><?php echo $itemsData->getQuantity(); ?></strong> x <?php echo $itemsData->getItemName(); ?>
+                                    </h6>
+                                <?php } ?>
+                            </td>
+                                
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="action" value="1">
+                                    <input type="hidden" name="order_id" value="<?php echo $ordersData->getID(); ?>">
+                                    <input type="hidden" name="status" value="successful">
+                                    <button href="#!" class="btn btn-login px-4 py-3">
+                                        <i class="fas fa-check fa-xl"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+
+                        <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="successful" class="tab-pane fade">
+            <div class="container mt-5 mb-5">
+                <div class="row">
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                        <tr>
+                            <th>
+                                Order no.
+                            </th>
+                            <th>
+                                Order time
+                            </th>
+                            <th>
+                                Address
+                            </th>
+                            <th>
+                                Details
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($view->successfulDataSet as $ordersData) { ?>
+                        <tr>
+                            <td>
+                                <?php echo $ordersData->getID(); ?>
+                            </td>
+                            <td>
+                                <?php echo $ordersData->getDate(); ?>
+                            </td>
+                            <td>
+                                <?php $address = $addressDataSet->fetchAddress($ordersData->getAddressID());
+                                    if($address->getType() == "house") {
+                                        echo $address->getArea() ?> , Block <?php echo $address->getBlock() ?> ,
+                                        Street <?php echo $address->getStreet() ?> ,House <?php echo $address->getBuilding() ?> , <?php echo $address->getAdditional() ?> , <?php echo $address->getPhone();
+                                    } else {
+                                        echo $address->getArea() ?> , Block <?php echo $address->getBlock() ?> , Street <?php echo $address->getStreet() ?> , Building <?php echo $address->getBuilding() ?> ,
+                                        Floor <?php echo $address->getFloor() ?> , Apartment <?php echo $address->getApartment() ?> , <?php echo $address->getAdditional() ?> , <?php echo $address->getPhone();
+                                    } ?>
+                            </td>
+                            <td>
+                                <?php $view->orderItems = $itemsDataSet->fetchOrderItems($ordersData->getID());
+                                foreach($view->orderItems as $itemsData) { ?>
+                                    <h6>
+                                        <strong><?php echo $itemsData->getQuantity(); ?></strong> x <?php echo $itemsData->getItemName(); ?>
+                                    </h6>
+                                <?php } ?>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include 'template/footer.phtml'; ?>
+</body>
+</html>

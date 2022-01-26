@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light p-3 mb-0"  id="home">
     <div class="container-fluid ">
         <a href="home.php">
-            <img src="./images/logo-new.png" height="60px" width="auto" alt="banner">
+            <img src="/MVC/images/logo-new.png" height="60px" width="auto" alt="banner">
         </a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -17,12 +17,24 @@
                 <a href="menu.php" class="nav-item nav-link">
                     Menu
                 </a>
+                <?php if(isset($_COOKIE['admin'])) { ?>
+                <a href="admin-menu.php" class="nav-item nav-link">
+                    Admin Menu
+                </a>
+                <a href="admin-orders.php" class="nav-item nav-link">
+                    Admin Orders
+                </a>
+                <?php } ?>
             </div>
             <div class="navbar-nav ms-auto">
+                <?php if(isset($_COOKIE['admin'])) { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">Admin Logout</a>
+                </li>
+                <?php } else if(!isset($_COOKIE["login"])) { ?>
                 <a href="cart.php" class="nav-item nav-link">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
-                <?php if(!isset($_COOKIE["login"])) { ?>
                 <a href="login.php" class="nav-item nav-link">
                     Login
                 </a>
@@ -30,14 +42,28 @@
                     Register
                 </a>
                 <?php } else { ?>
-                <a href="#" class="nav-item nav-link">
-                    <strong>
-                        Profile
-                    </strong>
-                </a>
-                <a href="logout.php" class="nav-item nav-link">
-                    Logout
-                </a>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="cart.php" class="nav-link">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                My Profile
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="address.php">My Addresses</a>
+                                <a class="dropdown-item" href="orders.php">Active Orders</a>
+                                <a class="dropdown-item" href="history.php">Order History</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php">Logout</a>
+                        </li>
+                    </ul>
+                </div>
                 <?php } ?>
             </div>
         </div>

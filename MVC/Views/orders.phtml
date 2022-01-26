@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php include 'template/header.phtml'; ?>
+<body>
+<?php include 'template/navigation.phtml'; ?>
+
+<style>
+    table {
+        font-size: 1.7rem;
+    }
+</style>
+
+<div class="container d-flex justify-content-center">
+    <div class="row text-center forms" style="margin: 150px 0">
+        <h1>Orders</h1>
+        <p>View status of your orders</p>
+        <table class="table table-bordered table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        Order no.
+                    </th>
+                    <th>
+                        Order time
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Details
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+             <?php foreach($view->activeOrders as $ordersData) { ?>
+                <tr>
+                    <td>
+                        <?php echo $ordersData->getID(); ?>
+                    </td>
+                    <td>
+                        <?php echo $ordersData->getDate(); ?>
+                    </td>
+                    <?php if($ordersData->getStatus() == "pending") { ?>
+                    <td>
+                        <h6 class="border border-warning m-0 px-0  pl-0 py-1 status yellow">
+                            <i class="fas fa-circle text-warning fa-xs"></i>
+                            Pending
+                        </h6>
+                    </td>
+                    <?php } if($ordersData->getStatus() == "accepted") { ?>
+                    <td>
+                        <h6 class="border border-primary m-0 px-0  pl-0 py-1 status blue">
+                            <i class="fas fa-circle text-primary fa-xs"></i>
+                            Accepted
+                        </h6>
+                    </td>
+                    <?php } ?>
+                    <td>
+                        <?php $view->orderItems = $itemsDataSet->fetchOrderItems($ordersData->getID());
+                        foreach($view->orderItems as $itemsData) { ?>
+                        <h6>
+                            <strong><?php echo $itemsData->getQuantity(); ?></strong> x <?php echo $itemsData->getItemName(); ?>
+                        </h6>
+                   
+                    <?php } ?>
+                    </td>
+                    <td>
+                        <h6>
+                            <?php echo $ordersData->getTotal(); ?> BD
+                        </h6>
+                    </td>
+                </tr>
+             <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<?php include 'template/footer.phtml'; ?>

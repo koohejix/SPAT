@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php include 'template/header.phtml'; ?>
+<body>
+<?php include 'template/navigation.phtml'; ?>
+
+<style>
+    table, input {
+        font-size: 1.7rem !important;
+    }
+</style>
+
+<div class="container d-flex justify-content-center">
+    <div class="row text-center forms" style="margin: 150px 0">
+        <h1>Delivery Locations</h1>
+        <p>Manage your saved addresses</p>
+        <table class="table table-bordered table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        Phone
+                    </th>
+                    <th>
+                        &nbsp;
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach($view->addresses as $addressData) { ?>
+                <tr>
+                    <td>
+                        <?php echo $addressData->getName(); ?>
+                    </td>
+                    <td>
+                        <?php echo $addressData->getBuilding(); ?>, Block <?php echo $addressData->getBlock(); ?>, Street <?php echo $addressData->getStreet(); ?>, <?php echo $addressData->getArea(); ?>
+                    </td>
+                    <td>
+                        <?php echo $addressData->getPhone(); ?>
+                    </td>
+                    <td>
+                        <a href="">
+                            <i class="fas fa-times fa-lg text-danger"></i>
+                        </a>
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+
+        <div class="mt-5 w-50 text-center">
+            <h4 style="cursor: pointer;" onclick="getElementById('newAddress').style.display = 'block'">
+                <i class="fas fa-plus"></i>
+                Add new address
+            </h4>
+
+            <div id="newAddress" style="display: none;" >
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="forms">
+
+                    <div class="form-group">
+                        <label for="addresstype">Address Type</label>
+                        <select class="form-control" id="addresstype" name="addresstype">
+                            <option value="house">House</option>
+                            <option value="apartment">Apartment</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="fields">
+                        <div class="form-group" id="name">
+                            <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Name" value="">
+                        </div>
+
+                        <div class="form-group" id="area">
+                            <input type="text" name="area" id="area" tabindex="1" class="form-control" placeholder="Area" value="">
+                        </div>
+
+                        <div class="form-group" id="block">
+                            <input type="text" name="block" id="block" tabindex="1" class="form-control" placeholder="Block" value="">
+                        </div>
+
+                        <div class="form-group" id="street">
+                            <input type="text" name="street" id="street" tabindex="1" class="form-control" placeholder="Street" value="">
+                        </div>
+
+                        <div class="form-group" id="homeFields">
+                            <div class="form-group" id="house">
+                                <input type="text" name="house" id="house" tabindex="1" class="form-control" placeholder="House Number" value="">
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="apartmentFields">
+                            <div class="form-group" id="building">
+                                <input type="text" name="building" id="building" tabindex="1" class="form-control" placeholder="Building" value="">
+                            </div>
+
+                            <div class="form-group" id="floor">
+                                <input type="text" name="floor" id="floor" tabindex="1" class="form-control" placeholder="Floor" value="">
+                            </div>
+
+                            <div class="form-group" id="apartment">
+                                <input type="text" name="apartment" id="apartment" tabindex="1" class="form-control" placeholder="Apartment Number" value="">
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="phone">
+                            <input type="text" name="phone" id="phone" tabindex="1" class="form-control" placeholder="Phone Number" value="">
+                        </div>
+
+                        <div class="form-group" id="additional">
+                            <input type="text" name="additional" id="additional" tabindex="1" class="form-control" placeholder="Additional Details" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <input type="submit" name="add" id="add" tabindex="4" class="form-control btn btn-login" value="Add">
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="/MVC/js/custom.js" type="text/javascript" ></script>
+
+<?php include 'template/footer.phtml'; ?>

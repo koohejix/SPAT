@@ -1,5 +1,5 @@
 <?php
-
+require_once('cartcheck.php');
 require_once("Models/UserFunctions.php");
 $userData = new userFunctions();
 
