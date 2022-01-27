@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light p-3 mb-0"  id="home">
     <div class="container-fluid ">
-        <a href="home.php">
+        <a href="/MVC/home.php">
             <img src="/MVC/images/logo-new.png" height="60px" width="auto" alt="banner">
         </a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -8,20 +8,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
-                <a href="home.php" class="nav-item nav-link active">
+                <a href="/MVC/home.php" class="nav-item nav-link active">
                     Home
                 </a>
-                <a href="about.php" class="nav-item nav-link">
+                <a href="/MVC/about.php" class="nav-item nav-link">
                     About
                 </a>
-                <a href="menu.php" class="nav-item nav-link">
+                <a href="/MVC/menu.php" class="nav-item nav-link">
                     Menu
                 </a>
                 <?php if(isset($_COOKIE['admin'])) { ?>
-                <a href="admin-menu.php" class="nav-item nav-link">
+                <a href="/MVC/admin-menu.php" class="nav-item nav-link">
                     Admin Menu
                 </a>
-                <a href="admin-orders.php" class="nav-item nav-link">
+                <a href="/MVC/admin-orders.php" class="nav-item nav-link">
                     Admin Orders
                 </a>
                 <?php } ?>
@@ -29,23 +29,23 @@
             <div class="navbar-nav ms-auto">
                 <?php if(isset($_COOKIE['admin'])) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="logout.php">Admin Logout</a>
+                    <a class="nav-link" href="/MVC/logout.php">Admin Logout</a>
                 </li>
                 <?php } else if(!isset($_COOKIE["login"])) { ?>
-                <a href="cart.php" class="nav-item nav-link">
+                <a href="/MVC/cart.php" class="nav-item nav-link">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
-                <a href="login.php" class="nav-item nav-link">
+                <a href="/MVC/login.php" class="nav-item nav-link">
                     Login
                 </a>
-                <a href="register.php" class="nav-item nav-link">
+                <a href="/MVC/register.php" class="nav-item nav-link">
                     Register
                 </a>
                 <?php } else { ?>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="cart.php" class="nav-link">
+                            <a href="/MVC/cart.php" class="nav-link">
                                 <i class="fas fa-shopping-cart"></i>
                             </a>
                         </li>
@@ -54,13 +54,13 @@
                                 My Profile
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="address.php">My Addresses</a>
-                                <a class="dropdown-item" href="orders.php">Active Orders</a>
-                                <a class="dropdown-item" href="history.php">Order History</a>
+                                <a class="dropdown-item" href="/MVC/address.php">My Addresses</a>
+                                <a class="dropdown-item" href="/MVC/orders.php">Active Orders</a>
+                                <a class="dropdown-item" href="/MVC/history.php">Order History</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="logout.php">Logout</a>
+                            <a class="nav-link" href="/MVC/logout.php">Logout</a>
                         </li>
                     </ul>
                 </div>
